@@ -253,3 +253,20 @@ Ensuite:
 
 - :sos: `git checkout -f project-10-solution`.
 - :fast_forward: `git checkout -f project-11-readme`.
+
+## Step 11
+
+Les tests sont cassés depuis le step 7 !
+
+...
+
+Je plaisante (même si c'est vrai). On va parler sécurité vite fait.
+
+- On installe le module [helmet](https://www.npmjs.com/package/helmet).
+- On ajoute le middleware qui va bien.
+- C'est tout !
+
+Ensuite:
+
+- :sos: `git checkout -f project-11-solution`.
+- :fast_forward: `git checkout -f project-12-readme`.
