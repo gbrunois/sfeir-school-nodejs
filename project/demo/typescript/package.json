@@ -1,0 +1,43 @@
+{
+  "name": "sfeir-schools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "lint": "prettier --write src/lib/**/*.js src/lib/**/*.ts src/index.ts",
+    "start": "cross-env SALT=kikou node dist/index.js",
+    "dev": "cross-env SALT=kikou node dist/index.js | bunyan",
+    "test": "cross-env SALT=kikou jest --detectOpenHandles"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/passport": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "helmet": "^3.13.0",
+    "on-headers": "^1.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pouchdb": "^7.1.1",
+    "pouchdb-find": "^7.1.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.12",
+    "@types/pouchdb": "^6.4.0",
+    "jest": "^23.5.0",
+    "jest-environment-node": "^23.4.0",
+    "pouchdb-adapter-memory": "^7.1.1",
+    "prettier": "^1.14.2",
+    "supertest": "^3.3.0",
+    "typescript": "^3.6.4"
+  }
+}
