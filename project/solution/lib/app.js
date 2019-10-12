@@ -13,6 +13,7 @@ const users = require("./routes/users");
 const app = express();
 
 const getUserStrategy = require("./auth/user");
+const registerSwaggerRoutes = require("./swagger-router");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,6 +46,8 @@ module.exports = db => {
   app.use("/users", users(db));
 
   app.use(errorMw);
+
+  registerSwaggerRoutes(app);
 
   return app;
 };
