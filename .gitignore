@@ -46,3 +46,4 @@ jspm_packages
 globalConfig.json
 .vscode
 schoolsdb
+project/demo/gcp/secret/key.json
