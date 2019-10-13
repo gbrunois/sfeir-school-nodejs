@@ -9,6 +9,7 @@ const errorMw = require("./middlewares/error");
 
 const schools = require("./routes/schools");
 const users = require("./routes/users");
+const PouchSession = require("session-pouchdb-store");
 
 const app = express();
 
@@ -21,7 +22,8 @@ app.use(
   session({
     secret: "SFEIR",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store : new PouchSession('http://localhost:5984/sessions')
   })
 );
 app.use(passport.initialize());
