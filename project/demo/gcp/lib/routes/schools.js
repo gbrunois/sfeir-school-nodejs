@@ -3,11 +3,10 @@ const express = require("express");
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
-  } else {
-    const err = new Error("Not authenticated");
-    err.statusCode = 401;
-    next(err);
   }
+  const err = new Error("Not authenticated");
+  err.statusCode = 401;
+  return next(err);
 }
 
 const doGet = db => (req, res, next) => {
@@ -15,7 +14,7 @@ const doGet = db => (req, res, next) => {
     .get()
     .then(snapshot => {
       const schools = [];
-      snapshot.forEach(function(childSnapshot) {
+      snapshot.docs.map(function(childSnapshot) {
         schools.push({
           ...childSnapshot.data(),
           id: childSnapshot.id
