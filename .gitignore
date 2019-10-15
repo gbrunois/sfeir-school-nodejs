@@ -39,9 +39,11 @@ jspm_packages
 .node_repl_history
 
 *.iml
-*.log
+*.log*
 .idea/
 # Project artefacts
 03_fs/jtutu
 globalConfig.json
 dist
+.vscode
+schoolsdb
