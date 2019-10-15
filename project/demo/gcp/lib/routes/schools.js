@@ -13,13 +13,7 @@ const doGet = db => (req, res, next) => {
   db.collection("schools")
     .get()
     .then(snapshot => {
-      const schools = [];
-      snapshot.docs.map(function(childSnapshot) {
-        schools.push({
-          ...childSnapshot.data(),
-          id: childSnapshot.id
-        });
-      });
+      const schools = snapshot.docs.map(child => ({...child.data(), id: child.id}));
       console.log("Found schools", schools);
       res.send(schools);
     })
