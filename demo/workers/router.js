@@ -1,14 +1,12 @@
 const url = require('url')
-
 const { compute, computeWithWorker } = require('./compute')
 const { hello } = require('./hello')
 
-function createRouter(setWorkers) {
-
+function createRouter() {
     const routesMap = new Map()
     routesMap.set('/hello', hello)
-    const computeHandler = setWorkers ? computeWithWorker : compute
-    routesMap.set('/compute', computeHandler)
+    routesMap.set('/compute', compute)
+    routesMap.set('/compute-worker', computeWithWorker)
 
     return function router(req, res) {
         const incUrl = url.parse(req.url)
@@ -18,7 +16,6 @@ function createRouter(setWorkers) {
         }
         handler(req, res)
     }
-
 }
 
 function unknwon(req, res) {

@@ -1,8 +1,10 @@
 const { Worker } = require('worker_threads')
-const { sort } = require('./compute-service')
+const { generatePrimes } = require('./generate-primes')
+
+const max = 1e7;
 
 function compute(req, res) {
-    sort()
+    generatePrimes(2, max)
     res.writeHead(200)
     res.end("Intensive compute done")
     return

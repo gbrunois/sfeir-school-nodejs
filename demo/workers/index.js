@@ -3,10 +3,7 @@ const port = 3001
 
 const { createRouter } = require('./router')
 
-
-const setWorkers = process.argv.some(arg => arg == "--myworkers")
-
-const router = createRouter(setWorkers)
+const router = createRouter()
 
 const server = http.createServer(router)
 

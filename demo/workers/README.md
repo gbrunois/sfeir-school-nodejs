@@ -20,14 +20,14 @@ Lancement du projet (flag --experimental-worker non requis avec Node JS > 12)
 node --experimental-worker index.js
 ```
 
-* On va sur la route /hello, on a un retour rapide.
-* On va sur la route /compute, qui met du temps à répondre.
-* Lors du compute, on appelle de nouveau hello: elle met du temps à répondre car elle doit attendre la fin du compute.
+* Un appel à /hello, n'est pas bloquant (`curl localhost:3001/hello`).
+* Un appel à /compute est bloquant. (`curl localhost:3001/compute`)
+* Pendant le calcul, les autres appels à /hello sont en attente.
 
 ### Avec workers
 
 ```sh
 node --experimental-worker index.js
 ```
-
-L'appel à /compute ne bloque plus /hello
+* Un appel à /compute-worker est non bloquant. (`curl localhost:3001/compute-worker`)
+* Pendant le calcul, les autres appels à /hello sont exécutés immediatement.

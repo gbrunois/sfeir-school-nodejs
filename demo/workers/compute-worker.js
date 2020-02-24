@@ -1,5 +1,6 @@
 const { parentPort } = require('worker_threads')
-const { sort } = require('./compute-service')
+const { generatePrimes } = require('./generate-primes')
+const max = 1e7;
 
-sort()
-parentPort.postMessage({ hello: "sort done!!!" })
+generatePrimes(2, max)
+parentPort.postMessage({ hello: "generatePrimes done!!!" })
