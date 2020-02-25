@@ -2,6 +2,9 @@ const http2 = require("http2");
 const fs = require("fs");
 const path = require("path");
 const helper = require("./helper");
+let htmlContent = fs.readFileSync('index.html', 'utf8');
+htmlContent = htmlContent.replace("%HTTP_VERSION%", 'HTTP2');
+
 
 const {
   HTTP2_HEADER_PATH,
@@ -88,14 +91,7 @@ server.on("stream", (stream, headers) => {
       pushAsset(stream, file);
     });
 
-    stream.end(
-      "<html><body>\n" +
-        '<link rel="stylesheet" type="text/css"  href="assets/demo.css">\n' +
-        "<h1>Hello HTTP2</h1>" +
-        '<img src="assets/horizon-4K.jpg">\n' +
-        "</body>\n" +
-        "<html>"
-    );
+    stream.end(htmlContent);
   }
 });
 

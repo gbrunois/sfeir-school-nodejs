@@ -2,6 +2,8 @@ const https = require("https");
 const port = 3001;
 const fs = require("fs");
 const helper = require("./helper");
+let htmlContent = fs.readFileSync('index.html', 'utf8');
+htmlContent = htmlContent.replace("%HTTP_VERSION%", 'HTTP');
 
 const assets = helper.getFiles("assets");
 
@@ -13,14 +15,7 @@ const options = {
 const server = https.createServer(options, function(req, res) {
   console.log(req.url);
   if (req.url === "/") {
-    res.end(
-      "<html><body>\n" +
-        '<link rel="stylesheet" type="text/css"  href="assets/demo.css">\n' +
-        "<h1>Hello HTTP2</h1>" +
-        '<img src="assets/horizon-4K.jpg">\n' +
-        "</body>\n" +
-        "<html>"
-    );
+    res.end(htmlContent);
   } else {
     const asset = assets.get(req.url);
     if (!asset) {
