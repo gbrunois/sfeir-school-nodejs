@@ -1,7 +1,6 @@
 "use strict";
 
 const min = 2;
-const max = 1e7;
 const primes = [];
 function generatePrimes(start, range) {
   let isPrime = true;
