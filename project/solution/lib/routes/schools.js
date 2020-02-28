@@ -44,7 +44,54 @@ const doPost = db => (req, res, next) => {
 module.exports = db => {
   const router = express.Router();
 
+  /**
+   * @swagger
+   *
+   * /schools:
+   *   get:
+   *     description: Get all schools
+   *     produces:
+   *       - application/json
+   *     responses:
+   *       200:
+   *         description: A list of schools
+   *         schema:
+   *            type: object
+   *            properties:
+   *              title:
+   *                type: string
+   *              trainer:
+   *                type:  string
+   *              attendees:
+   *                type:  number
+   */
   router.get("/", doGet(db));
+
+  /**
+   * @swagger
+   *
+   * /schools:
+   *   post:
+   *     description: Add a new school
+   *     parameters:
+   *       - name: body
+   *         in: body
+   *         required: true
+   *         schema:
+   *           type: object
+   *           required:
+   *             - title
+   *           properties:
+   *             title:
+   *               type: string
+   *             trainer:
+   *               type: string
+   *             attendees:
+   *               type: number
+   *     responses:
+   *       201:
+   *         description: OK
+   */
   router.post("/", ensureAuthenticated, doPost(db));
 
   return router;
